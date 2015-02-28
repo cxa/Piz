@@ -1,0 +1,4 @@
+module zlib {
+  header "zlib.h"
+  export *
+}
