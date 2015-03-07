@@ -62,3 +62,12 @@ public extension SimpleUnzipper {
   }
   
 }
+
+// MARK: subscription
+public extension SimpleUnzipper {
+  
+  subscript(file: String) -> NSData? {
+    return dataForFile(file)
+  }
+  
+}

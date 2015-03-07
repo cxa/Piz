@@ -37,7 +37,7 @@ class SimpleUnzipperTests: XCTestCase {
   }
   
   func testStoreData() {
-    if let data = unzipper.dataForFile("mimetype") {
+    if let data = unzipper["mimetype"] {
       if let str = NSString(data: data, encoding: NSUTF8StringEncoding) {
         XCTAssertEqual(str, "application/epub+zip", "data content should be `application/epub+zip`")
       } else {
@@ -49,7 +49,7 @@ class SimpleUnzipperTests: XCTestCase {
   }
   
   func testDeflateData() {
-    if let data = unzipper.dataForFile("META-INF/container.xml") {
+    if let data = unzipper["META-INF/container.xml"] {
       let b = NSBundle(forClass: SimpleUnzipperTests.self)
       let url = b.URLForResource("container", withExtension: "xml")!
       let expectedData = NSData(contentsOfURL: url)!
