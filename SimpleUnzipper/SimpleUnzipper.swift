@@ -44,7 +44,7 @@ public extension SimpleUnzipper {
   
   /// Retrive file names inside the zip
   var files: [String] {
-    return _cdirs.keys.array
+    return Array(_cdirs.keys)
   }
   
   /// Test if `file` exists

@@ -191,6 +191,8 @@
 		E044234E1A9CE0EC00771A65 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = lazyapps;
 				TargetAttributes = {
