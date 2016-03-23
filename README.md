@@ -19,24 +19,24 @@ If you add `SimpleUnzipper` inside your project dirctory, the `Import Paths` sho
 
 SimpleUnzipper is very simple as its name, contains only a few public properties and methods.
 
-<pre>
+```swift
 import SimpleUnzipper
 ...
 // create an unzipper with file URL or data
-if let unzipper = <b>SimpleUnzipper.createWithURL(url)</b> {
-  // or SimpleUnzipper.<b>createWithData(data)</b>
+if let unzipper = SimpleUnzipper.createWithURL(url) {
+  // or SimpleUnzipper.createWithData(data)
   
   // get all file names, including paths if available
-  let files = unzipper.<b>files</b>
+  let files = unzipper.files
   
   // check if a file available
-  let isAvailable = unzipper.<b>containsFile("path/to/file.ext")</b>
+  let isAvailable = unzipper.containsFile("path/to/file.ext")
   
   // get data from a file
-  let data = unzipper.<b>dataForFile("path/to/file.ext")</b>
+  let data = unzipper.dataForFile("path/to/file.ext")
   
 }
-</pre>
+```
 		
 ## About Me
 
