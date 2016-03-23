@@ -18,12 +18,12 @@
 		E04423881AA01C8400771A65 /* Uncompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04423871AA01C8400771A65 /* Uncompressor.swift */; };
 		E070F2541CA2558200C5933F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E070F2531CA2558200C5933F /* libz.tbd */; };
 		E070F2561CA2558D00C5933F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E070F2551CA2558D00C5933F /* libz.tbd */; };
-		E07608761CA0749F0000E4C0 /* SimpleUnzipper.h in Headers */ = {isa = PBXBuildFile; fileRef = E07608751CA0749F0000E4C0 /* SimpleUnzipper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E07608F21CA07A610000E4C0 /* BytesReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044237B1A9F03AC00771A65 /* BytesReader.swift */; };
 		E07608F31CA07A610000E4C0 /* EndRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E044237D1A9F1E6E00771A65 /* EndRecord.swift */; };
 		E07608F41CA07A610000E4C0 /* CentralDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04423841A9F835A00771A65 /* CentralDirectory.swift */; };
 		E07608F51CA07A610000E4C0 /* Uncompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04423871AA01C8400771A65 /* Uncompressor.swift */; };
 		E07608F61CA07A610000E4C0 /* SimpleUnzipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04423731A9CE7D200771A65 /* SimpleUnzipper.swift */; };
+		E081F14D1CA2BBEE005FC2E3 /* SimpleUnzipper.h in Headers */ = {isa = PBXBuildFile; fileRef = E044235C1A9CE0EC00771A65 /* SimpleUnzipper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +53,6 @@
 		E070F2531CA2558200C5933F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		E070F2551CA2558D00C5933F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		E07608731CA0749F0000E4C0 /* SimpleUnzipper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleUnzipper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E07608751CA0749F0000E4C0 /* SimpleUnzipper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleUnzipper.h; sourceTree = "<group>"; };
 		E07608771CA0749F0000E4C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,7 +156,6 @@
 		E07608741CA0749F0000E4C0 /* SimpleUnzipper-OSX */ = {
 			isa = PBXGroup;
 			children = (
-				E07608751CA0749F0000E4C0 /* SimpleUnzipper.h */,
 				E070F2551CA2558D00C5933F /* libz.tbd */,
 				E07608771CA0749F0000E4C0 /* Info.plist */,
 			);
@@ -179,7 +177,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E07608761CA0749F0000E4C0 /* SimpleUnzipper.h in Headers */,
+				E081F14D1CA2BBEE005FC2E3 /* SimpleUnzipper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
