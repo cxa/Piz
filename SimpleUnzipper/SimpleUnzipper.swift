@@ -11,7 +11,27 @@ import Foundation
 /// Use static method `createWithURL` or `createWithData` to create an instance
 public struct SimpleUnzipper {
   
-  let data: NSData
+  public let data: NSData
+
+  public init?(data: NSData) {
+    let bytes = unsafeBitCast(data.bytes, UnsafePointer<UInt8>.self)
+    let len = data.length
+    guard
+      let rec = EndRecord.findEndRecordInBytes(bytes, length: len),
+      let dirs = CentralDirectory.findCentralDirectoriesInBytes(bytes, length: len, withEndRecrod: rec)
+    else {
+      return nil
+    }
+
+    self.data = data
+    _bytes = bytes
+    _cdirs = dirs
+  }
+
+  public init?(fileURL: NSURL) {
+    guard let data = NSData(contentsOfURL: fileURL) else { return nil }
+    self.init(data: data)
+  }
   
   private let _bytes: UnsafePointer<UInt8>
 
@@ -20,28 +40,7 @@ public struct SimpleUnzipper {
 }
 
 public extension SimpleUnzipper {
-  
-  /// Create an unzipper with an URL, shortcut for `createWithData`
-  static func createWithURL(zipFileURL: NSURL) -> SimpleUnzipper? {
-    if let data = NSData(contentsOfURL: zipFileURL) {
-      return createWithData(data)
-    }
-    
-    return nil
-  }
-  
-  /// Create an unzipper with given `NSData`
-  static func createWithData(data: NSData) -> SimpleUnzipper? {
-    let bytes = unsafeBitCast(data.bytes, UnsafePointer<UInt8>.self)
-    let len = data.length
-    if let rec = EndRecord.findEndRecordInBytes(bytes, length: len),
-       let dirs = CentralDirectory.findCentralDirectoriesInBytes(bytes, length: len, withEndRecrod: rec) {
-        return SimpleUnzipper(data: data, _bytes: bytes, _cdirs: dirs)
-    }
-    
-    return nil
-  }
-  
+
   /// Retrive file names inside the zip
   var files: [String] {
     return Array(_cdirs.keys)
@@ -60,14 +59,9 @@ public extension SimpleUnzipper {
     
     return nil
   }
-  
-}
 
-// MARK: subscription
-public extension SimpleUnzipper {
-  
   subscript(file: String) -> NSData? {
     return dataForFile(file)
   }
-  
+
 }

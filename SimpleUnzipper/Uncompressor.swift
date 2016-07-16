@@ -10,7 +10,7 @@ import Foundation
 import zlib
 
 struct Uncompressor {
-  
+
   static func uncompressWithCentralDirectory(cdir: CentralDirectory, fromBytes bytes: UnsafePointer<UInt8>) -> NSData? {
     let offsetBytes = bytes.advancedBy(Int(cdir.dataOffset))
     let offsetMBytes = UnsafeMutablePointer<UInt8>(offsetBytes)
@@ -30,8 +30,8 @@ struct Uncompressor {
       if inflate(&strm, Z_NO_FLUSH) != Z_STREAM_END { out.destroy(); return nil }
       if inflateEnd(&strm) != Z_OK { out.destroy(); return nil }
     }
-    
+
     return NSData(bytesNoCopy: out, length: len, freeWhenDone: true)
   }
-  
+
 }

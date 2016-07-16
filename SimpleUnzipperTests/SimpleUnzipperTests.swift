@@ -15,7 +15,7 @@ class SimpleUnzipperTests: XCTestCase {
   lazy var unzipper: SimpleUnzipper! = {
     let b = NSBundle(forClass: SimpleUnzipperTests.self)
     if let url = b.URLForResource("test", withExtension: "epub") {
-      return SimpleUnzipper.createWithURL(url)
+      return SimpleUnzipper(fileURL: url)
     }
     
     return nil

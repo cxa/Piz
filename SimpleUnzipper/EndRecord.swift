@@ -7,34 +7,34 @@
 //
 
 /*
-end of central dir signature    4 bytes  (0x06054b50)
-number of this disk             2 bytes
-number of the disk with the
-start of the central directory  2 bytes
-total number of entries in the
-central directory on this disk  2 bytes
-total number of entries in
-the central directory           2 bytes
-size of the central directory   4 bytes
-offset of start of central
-directory with respect to
-the starting disk number        4 bytes
-.ZIP file comment length        2 bytes
-.ZIP file comment       (variable size)
-*/
+ end of central dir signature    4 bytes  (0x06054b50)
+ number of this disk             2 bytes
+ number of the disk with the
+ start of the central directory  2 bytes
+ total number of entries in the
+ central directory on this disk  2 bytes
+ total number of entries in
+ the central directory           2 bytes
+ size of the central directory   4 bytes
+ offset of start of central
+ directory with respect to
+ the starting disk number        4 bytes
+ .ZIP file comment length        2 bytes
+ .ZIP file comment       (variable size)
+ */
 
 struct EndRecord {
-  
+
   let numEntries: UInt16
-  
+
   let centralDirectoryOffset: UInt32
-  
+
 }
 
 extension EndRecord {
-  
+
   static let signature: [UInt8] = [0x06, 0x05, 0x4b, 0x50]
-  
+
   static func findEndRecordInBytes(bytes: UnsafePointer<UInt8>, length: Int) -> EndRecord? {
     var reader = BytesReader(bytes: bytes, index: length - 1 - signature.count)
     let maxTry = Int(UInt16.max)
@@ -47,10 +47,10 @@ extension EndRecord {
           if i == rng.endIndex.predecessor() { reader.skip(1); return true }
         }
       }
-      
+
       return false
     }()
-    
+
     if !indexFound { return nil }
     reader.skip(4)
     let numDisks = reader.le16()

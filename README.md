@@ -1,10 +1,10 @@
 # SimpleUnzipper
 
-Unzip single, unencrypted (no password), non-zip64 (large than 4GB) files, written in Swift 1.2. It's driven by a private (currently) EPUB parser project, since EPUB is simply a zip file.
+Unzip single, unencrypted (no password), non-zip64 (large than 4GB) files. Simple and efficient.
 
 ## Installation
 
-`SimpleUnzipper` is encapsulated as a Framework. Drag `SimpleUnzipper.xcodeproj` into your project, add `libz.dylib` and `SimpleUnzipper` to “Linked Frameworks and Libraries” under “General” tab of target settings.
+`SimpleUnzipper` is encapsulated as a framework. Drag `SimpleUnzipper.xcodeproj` into your project, add `libz.dylib` and `SimpleUnzipper` to “Linked Frameworks and Libraries” under “General” tab of target settings.
 
 ![General Settings](gsettings.png)
 
@@ -14,7 +14,6 @@ The most important step, don't forget to add correct path which contains `Simple
 
 If you add `SimpleUnzipper` inside your project dirctory, the `Import Paths` should be `$(SRCROOT)/SimpleUnzipper`
 
-
 ## Example
 
 SimpleUnzipper is very simple as its name, contains only a few public properties and methods.
@@ -23,8 +22,8 @@ SimpleUnzipper is very simple as its name, contains only a few public properties
 import SimpleUnzipper
 ...
 // create an unzipper with file URL or data
-if let unzipper = SimpleUnzipper.createWithURL(url) {
-  // or SimpleUnzipper.createWithData(data)
+if let unzipper = SimpleUnzipper(fileURL: url) {
+  // or SimpleUnzipper(data: data)
   
   // get all file names, including paths if available
   let files = unzipper.files
@@ -47,7 +46,6 @@ if let unzipper = SimpleUnzipper.createWithURL(url) {
 ## Credits
 
 Test examle file `test.epub` is downloaded from <https://code.google.com/p/epub-samples/>
-
 
 ## License
 
