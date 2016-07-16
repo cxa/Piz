@@ -13,8 +13,8 @@ import SimpleUnzipper
 class SimpleUnzipperTests: XCTestCase {
   
   lazy var unzipper: SimpleUnzipper! = {
-    let b = NSBundle(forClass: SimpleUnzipperTests.self)
-    if let url = b.URLForResource("test", withExtension: "epub") {
+    let b = Bundle(for: SimpleUnzipperTests.self)
+    if let url = b.urlForResource("test", withExtension: "epub") {
       return SimpleUnzipper(fileURL: url)
     }
     
@@ -38,7 +38,7 @@ class SimpleUnzipperTests: XCTestCase {
   
   func testStoreData() {
     if let data = unzipper["mimetype"] {
-      if let str = NSString(data: data, encoding: NSUTF8StringEncoding) {
+      if let str = String(data: data, encoding: .utf8) {
         XCTAssertEqual(str, "application/epub+zip", "data content should be `application/epub+zip`")
       } else {
         XCTFail("can't init string from data")
@@ -50,9 +50,9 @@ class SimpleUnzipperTests: XCTestCase {
   
   func testDeflateData() {
     if let data = unzipper["META-INF/container.xml"] {
-      let b = NSBundle(forClass: SimpleUnzipperTests.self)
-      let url = b.URLForResource("container", withExtension: "xml")!
-      let expectedData = NSData(contentsOfURL: url)!
+      let b = Bundle(for: SimpleUnzipperTests.self)
+      let url = b.urlForResource("container", withExtension: "xml")!
+      let expectedData = try! Data(contentsOf: url)
       XCTAssertEqual(data, expectedData, "data should be the same")
     } else {
       XCTFail("can not get data")

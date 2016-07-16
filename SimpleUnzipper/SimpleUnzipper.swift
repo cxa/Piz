@@ -11,11 +11,11 @@ import Foundation
 /// Use static method `createWithURL` or `createWithData` to create an instance
 public struct SimpleUnzipper {
   
-  public let data: NSData
+  public let data: Data
 
-  public init?(data: NSData) {
-    let bytes = unsafeBitCast(data.bytes, UnsafePointer<UInt8>.self)
-    let len = data.length
+  public init?(data: Data) {
+    let bytes = unsafeBitCast((data as NSData).bytes, to: UnsafePointer<UInt8>.self)
+    let len = data.count
     guard
       let rec = EndRecord.findEndRecordInBytes(bytes, length: len),
       let dirs = CentralDirectory.findCentralDirectoriesInBytes(bytes, length: len, withEndRecrod: rec)
@@ -28,8 +28,8 @@ public struct SimpleUnzipper {
     _cdirs = dirs
   }
 
-  public init?(fileURL: NSURL) {
-    guard let data = NSData(contentsOfURL: fileURL) else { return nil }
+  public init?(fileURL: URL) {
+    guard let data = try? Data(contentsOf: fileURL) else { return nil }
     self.init(data: data)
   }
   
@@ -47,12 +47,12 @@ public extension SimpleUnzipper {
   }
   
   /// Test if `file` exists
-  func containsFile(file: String) -> Bool {
+  func containsFile(_ file: String) -> Bool {
     return _cdirs[file] != nil
   }
   
   /// Get data for `file`
-  func dataForFile(file: String) -> NSData? {
+  func dataForFile(_ file: String) -> Data? {
     if let cdir = _cdirs[file] {
       return Uncompressor.uncompressWithCentralDirectory(cdir, fromBytes: _bytes)
     }
@@ -60,7 +60,7 @@ public extension SimpleUnzipper {
     return nil
   }
 
-  subscript(file: String) -> NSData? {
+  subscript(file: String) -> Data? {
     return dataForFile(file)
   }
 

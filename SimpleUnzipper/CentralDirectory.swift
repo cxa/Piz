@@ -31,14 +31,14 @@
  */
 
 enum CompressionMethod {
-  case None
-  case Deflate
+  case none
+  case deflate
 
   init?(_ i: UInt16) {
     if i == 0 {
-      self = .None
+      self = .none
     } else if i == 8 {
-      self = .Deflate
+      self = .deflate
     } else {
       return nil
     }
@@ -93,7 +93,7 @@ extension CentralDirectory {
 
   static let signature: UInt32 = 0x02014b50
 
-  static func findCentralDirectoriesInBytes(bytes: UnsafePointer<UInt8>, length: Int, withEndRecrod er: EndRecord) -> [String: CentralDirectory]? {
+  static func findCentralDirectoriesInBytes(_ bytes: UnsafePointer<UInt8>, length: Int, withEndRecrod er: EndRecord) -> [String: CentralDirectory]? {
     var reader = BytesReader(bytes: bytes, index: Int(er.centralDirectoryOffset))
     var dirs = [String: CentralDirectory]()
     for _ in 0..<er.numEntries {

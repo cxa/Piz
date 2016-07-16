@@ -35,7 +35,7 @@ extension EndRecord {
 
   static let signature: [UInt8] = [0x06, 0x05, 0x4b, 0x50]
 
-  static func findEndRecordInBytes(bytes: UnsafePointer<UInt8>, length: Int) -> EndRecord? {
+  static func findEndRecordInBytes(_ bytes: UnsafePointer<UInt8>, length: Int) -> EndRecord? {
     var reader = BytesReader(bytes: bytes, index: length - 1 - signature.count)
     let maxTry = Int(UInt16.max)
     let minReadTo = max(length-maxTry, 0)
@@ -44,7 +44,7 @@ extension EndRecord {
       while reader.index > minReadTo {
         for i in rng {
           if reader.byteb() != self.signature[i] { break }
-          if i == rng.endIndex.predecessor() { reader.skip(1); return true }
+          if i == (rng.endIndex - 1) { reader.skip(1); return true }
         }
       }
 

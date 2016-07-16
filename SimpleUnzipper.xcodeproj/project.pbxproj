@@ -246,14 +246,16 @@
 			attributes = {
 				LastSwiftMigration = 0730;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = lazyapps;
 				TargetAttributes = {
 					E04423561A9CE0EC00771A65 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0800;
 					};
 					E04423611A9CE0EC00771A65 = {
 						CreatedOnToolsVersion = 6.3;
+						LastSwiftMigration = 0800;
 					};
 					E07608721CA0749F0000E4C0 = {
 						CreatedOnToolsVersion = 7.3;
@@ -455,6 +457,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -473,6 +476,8 @@
 				PRODUCT_NAME = SimpleUnzipper;
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -489,6 +494,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lazyapps.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SimpleUnzipperTests;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -501,6 +507,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lazyapps.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SimpleUnzipperTests;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -547,6 +555,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
