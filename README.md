@@ -45,7 +45,7 @@ if let unzipper = SimpleUnzipper(fileURL: url) {
 
 ## Credits
 
-Test examle file `test.epub` is downloaded from <https://code.google.com/p/epub-samples/>
+Test example file `test.epub` is downloaded from <https://code.google.com/p/epub-samples/>
 
 ## License
 
