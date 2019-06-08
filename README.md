@@ -1,52 +1,41 @@
-# SimpleUnzipper
+# Piz
 
-Unzip single, unencrypted (no password), non-zip64 (large than 4GB) files. Simple and efficient.
-
-## Installation
-
-`SimpleUnzipper` is encapsulated as a framework. Drag `SimpleUnzipper.xcodeproj` into your project, add `libz.dylib` and `SimpleUnzipper` to “Linked Frameworks and Libraries” under “General” tab of target settings.
-
-![General Settings](gsettings.png)
-
-The most important step, don't forget to add correct path which contains `SimpleUnzipper` to target's `Build Settings` -> `Swift Compiler - Search Paths` -> `Import Paths`. As below shows, `SimpleUnzipper` is on the same directory as the target project.
-
-![Build Settings Example](bsettings.png)
-
-If you add `SimpleUnzipper` inside your project dirctory, the `Import Paths` should be `$(SRCROOT)/SimpleUnzipper`
-
-## Example
-
-SimpleUnzipper is very simple as its name, contains only a few public properties and methods.
+The simplest unzipper just works.
 
 ```swift
-import SimpleUnzipper
+import Piz
 ...
 // create an unzipper with file URL or data
-if let unzipper = SimpleUnzipper(fileURL: url) {
-  // or SimpleUnzipper(data: data)
-  
+if let piz = Piz(fileURL: url) { // or let piz = Piz(data: data)
   // get all file names, including paths if available
-  let files = unzipper.files
-  
+  let files = piz.files
+
   // check if a file available
-  let isAvailable = unzipper.containsFile("path/to/file.ext")
-  
+  let isFileExisting = piz.containsFile("path/to/file.ext")
+
   // get data from a file
-  let data = unzipper.dataForFile("path/to/file.ext")
+  let data = piz.dataForFile("path/to/file.ext")
   
+  // or if you like subscription
+  let data = piz["path/to/file.ext"]
 }
 ```
-		
+
+## Install
+
+Swift package only, add this repo URL to your `Package.swift`.
+
 ## About Me
 
-* Twitter: [@_cxa](https://twitter.com/_cxa)
-* Apps available in App Store: <http://lazyapps.com>
-* PayPal: xianan.chen+paypal 📧 gmail.com, buy me a cup of coffee if you find it's useful for you.
+- Twitter: [@_cxa](https://twitter.com/_cxa)
+- Apps available in App Store: <http://lazyapps.com>
+- PayPal: xianan.chen+paypal 📧 gmail.com, buy me a cup of coffee if you find it's useful for you.
 
 ## Credits
 
-Test example file `test.epub` is downloaded from <https://code.google.com/p/epub-samples/>
+- Test file `test.epub` is downloaded from <https://code.google.com/p/epub-samples/>
+- Test zip64 file `64.zip` created with [https://gist.github.com/gumblex/5573ddb33c21fca4aecf]().
 
 ## License
 
-Under the MIT license. See the LICENSE file for more information. For non attributed commercial lisence, please contact me.
+Under the MIT license. See the LICENSE file for more information. For non attributed commercial license, please contact me.
