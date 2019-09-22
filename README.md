@@ -10,7 +10,7 @@ if let piz = Piz(fileURL: url) { // or let piz = Piz(data: data)
   // get all file names, including paths if available
   let files = piz.files
 
-  // check if a file available
+  // check if a file be available
   let isFileExisting = piz.contains(file: "path/to/file.ext")
 
   // get data from a file
