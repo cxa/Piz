@@ -1,7 +1,7 @@
 import Foundation
 
 /// A simple unzipper.
-public class Piz {
+public struct Piz {
   /// Zip data.
   public let data: Data
 
@@ -21,17 +21,13 @@ public class Piz {
     _bytes = bytes
     _cdirs = dirs
   }
-    
-  deinit {
-    _bytes.deallocate()
-  }
 
   /// Creates an instance from `fileURL`.
-  public convenience init?(fileURL: URL) {
+  public init?(fileURL: URL) {
     guard let data = try? Data(contentsOf: fileURL) else { return nil }
     self.init(data: data)
   }
-    
+
   private let _bytes: UnsafePointer<UInt8>
   private let _cdirs: [String: CDir]
 }
