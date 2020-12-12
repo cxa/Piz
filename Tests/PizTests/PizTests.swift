@@ -23,6 +23,17 @@ final class PizTests: XCTestCase {
     XCTAssertTrue(piz64 != nil, "Can not create piz64")
   }
   
+  func testNilOrNot()  {
+    var fileURL = URL(fileURLWithPath: #file)
+      .deletingLastPathComponent()
+      .appendingPathComponent("assets/test.epub")
+    var piz = Piz(fileURL: fileURL)
+    XCTAssertNotNil(piz)
+    fileURL = URL(fileURLWithPath: "dummy path")
+    piz = Piz(fileURL: fileURL)
+    XCTAssertNil(piz)
+  }
+  
   func testNumFiles() {
     XCTAssertEqual(piz.files.count, 0x1B, "number of files should be 0x1B")
     XCTAssertEqual(piz64.files.count, 0x1, "number of files should be 0x1")
