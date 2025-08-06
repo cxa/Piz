@@ -27,8 +27,7 @@ Swift package only, add this repo URL to your `Package.swift`.
 
 ## About Me
 
-- Twitter: [@_cxa](https://twitter.com/_cxa)
-- Apps available on the App Store: <http://lazyapps.com>
+- X: [@_c_x_a_](https://x.com/_c_x_a_)
 - PayPal: xianan.chen+paypal 📧 gmail.com, buy me a cup of coffee if you find it's useful for you
 
 ## Credits
